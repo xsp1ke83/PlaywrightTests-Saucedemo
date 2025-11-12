@@ -1,0 +1,10 @@
+{
+  "UserName": "standard_user",
+  "Password": "secret_sauce",
+  "Browser": "chromium",
+  "Headless": false,
+  "Timeout": 1000,
+  "SlowMo": 500,
+  "ItemsToBuy": [ "Sauce Labs Bike Light", "Sauce Labs Fleece Jacket", "Sauce Labs Onesie" ],
+  "BaseURL": "https://www.saucedemo.com/v1/"
+}

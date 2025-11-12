@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Saucedemo.PlaywrightTests.Pages.Cart">
+    <Position X="8.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\Cart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Saucedemo.PlaywrightTests.Pages.LoginPage">
+    <Position X="10.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAIAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\LoginPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Saucedemo.PlaywrightTests.Tests.AddAndCheckItemsInCartTest">
+    <Position X="4.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Tests\AddAndCheckItemsInCartTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Saucedemo.PlaywrightTests.Fixtures.PlaywrightBaseFixture">
+    <Position X="5.75" Y="0.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAIQgAAAAAAAAAEAAAAAAAQAgACAAAAEAAA=</HashCode>
+      <FileName>Fixtures\PlaywrightBaseFixture.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Saucedemo.PlaywrightTests.Utilities.Logger">
+    <Position X="1" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Logger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Saucedemo.PlaywrightTests.Tests.LoginTest">
+    <Position X="7.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Tests\LoginTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Saucedemo.PlaywrightTests.Pages.ProductPage">
+    <Position X="12.75" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAACCAAAAAAAAAAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\ProductPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
