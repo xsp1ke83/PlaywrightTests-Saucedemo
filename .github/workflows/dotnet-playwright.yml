@@ -27,10 +27,15 @@ jobs:
           restore-keys: |
             nuget-${{ runner.os }}-
 
-      - name: Install Playwright CLI (dotnet tool) and browsers
+      - name: Setup Node (for Playwright)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Playwright browsers
         run: |
-          dotnet tool install --global Microsoft.Playwright.CLI --version 1.40.0 || true
-          ~/.dotnet/tools/playwright install --with-deps
+          npm install -g playwright
+          npx playwright install --with-deps
 
       - name: Restore .NET packages
         run: dotnet restore
