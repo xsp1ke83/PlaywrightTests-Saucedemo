@@ -34,7 +34,7 @@ jobs:
           echo "::add-path::${HOME}/.dotnet/tools"
           ~/.dotnet/tools/playwright install --with-deps
 
-      - name: Restore .NET packages
+      - name: Restore .NET packages    
         run: dotnet restore
 
       - name: Build
