@@ -29,10 +29,14 @@ jobs:
 
       - name: Install Playwright CLI (dotnet tool) and browsers
         run: |
-          dotnet tool install --global Microsoft.Playwright.CLI --version 1.40.0 || true
-          # Ensure dotnet tools path is available
-          echo "::add-path::${HOME}/.dotnet/tools"
-          ~/.dotnet/tools/playwright install --with-deps
+          # Install or update the dotnet global tool (do not hide failures)
+          dotnet tool install --global Microsoft.Playwright.CLI || dotnet tool update --global Microsoft.Playwright.CLI
+
+          # Add dotnet tools path using the supported $GITHUB_PATH mechanism
+          echo "${HOME}/.dotnet/tools" >> $GITHUB_PATH
+
+          # Install browsers (playwright command available via dotnet tools path)
+          playwright install --with-deps
 
       - name: Restore .NET packages    
         run: dotnet restore
