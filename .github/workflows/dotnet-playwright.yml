@@ -27,22 +27,27 @@ jobs:
           restore-keys: |
             nuget-${{ runner.os }}-
 
-      - name: Install Playwright CLI (dotnet tool) and browsers
-        run: |
-          # Install or update the dotnet global tool (do not hide failures)
-          dotnet tool install --global Microsoft.Playwright.CLI || dotnet tool update --global Microsoft.Playwright.CLI
-
-          # Add dotnet tools path using the supported $GITHUB_PATH mechanism
-          echo "${HOME}/.dotnet/tools" >> $GITHUB_PATH
-
-          # Install browsers (playwright command available via dotnet tools path)
-          playwright install --with-deps
-
-      - name: Restore .NET packages    
+      - name: Restore solution packages
         run: dotnet restore
 
-      - name: Build
+      - name: Ensure Microsoft.Playwright package is referenced in test project(s)
+        run: |
+          # Adjust the path(s) below if your Playwright test project(s) are located elsewhere.
+          # This will add the package if missing (use the project that needs Microsoft.Playwright).
+          dotnet add tests/Saucedemo.PlaywrightTests/Saucedemo.PlaywrightTests.csproj package Microsoft.Playwright --version 1.55.0
+
+      - name: Build solution (Playwright package must be present / built before CLI installs browsers)
         run: dotnet build --configuration Release --no-restore
+
+      - name: Install or update Playwright CLI (dotnet tool)
+        run: |
+          dotnet tool install --global Microsoft.Playwright.CLI || dotnet tool update --global Microsoft.Playwright.CLI
+
+      - name: Make dotnet tools available to PATH (supported method)
+        run: echo "${HOME}/.dotnet/tools" >> $GITHUB_PATH
+
+      - name: Install Playwright browsers
+        run: playwright install --with-deps
 
       - name: Run tests
         run: dotnet test --configuration Release --no-build --logger "trx;LogFileName=tests.trx"
