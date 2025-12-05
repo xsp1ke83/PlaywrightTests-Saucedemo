@@ -1,11 +1,12 @@
-﻿using Microsoft.Playwright;
-using NUnit.Framework.Internal;
-using NUnit.Framework;
-
-using Microsoft.Extensions.Logging;
-using MSLogger = Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Logging.Console;
+using Microsoft.Playwright;
+using NUnit.Framework;
+using NUnit.Framework.Internal;
+using System.Reflection.PortableExecutable;
+using static System.Net.WebRequestMethods;
+using MSLogger = Microsoft.Extensions.Logging;
 
 
 namespace Saucedemo.PlaywrightTests.Fixtures
@@ -18,7 +19,9 @@ namespace Saucedemo.PlaywrightTests.Fixtures
         protected IBrowserContext BrowserContext;
         public TestSettings Settings;
 
-        protected MSLogger.ILogger Logger;         
+        protected MSLogger.ILogger Logger;
+
+        protected static IAPIRequestContext? Api;
 
         [OneTimeSetUp]
         public async Task GlobalSetup()
@@ -48,7 +51,23 @@ namespace Saucedemo.PlaywrightTests.Fixtures
                 _ => await Playwright.Chromium.LaunchAsync(launchOptions),    // default
             };
             Logger.LogInformation("Browser launched.");
+
+
+            Api = await Playwright.APIRequest.NewContextAsync(new()
+            {
+                BaseURL = "https://jsonplaceholder.typicode.com",
+                ExtraHTTPHeaders = new Dictionary<string, string>
+                {
+                    ["Accept"] = "application/json",
+                }
+            });
+
+            
+
         }
+
+
+
 
         [SetUp]
         public async Task TestSetup()
