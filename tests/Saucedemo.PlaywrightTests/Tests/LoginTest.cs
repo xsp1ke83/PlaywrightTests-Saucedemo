@@ -29,6 +29,8 @@ namespace Saucedemo.PlaywrightTests.Tests
             await Task.Delay(300);
             Assert.That(Page.Url, Does.Contain("/inventory.html"));
 
+            
+
         }
         
     }

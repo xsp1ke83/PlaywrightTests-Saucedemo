@@ -8,7 +8,8 @@ namespace Saucedemo.PlaywrightTests.Fixtures
 
         public static async Task<TestSettings> GetConfig()
         {
-            string json = await File.ReadAllTextAsync("Config\\Settings.local-debug.json");
+            string path = Path.Combine("Config", "Settings.local-debug.json");
+            string json = await File.ReadAllTextAsync(path);
             _settings = JsonSerializer.Deserialize<TestSettings>(json)!;
 
             return _settings;
